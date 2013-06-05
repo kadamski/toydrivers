@@ -9,6 +9,20 @@ static struct platform_device *rtc01_platform_device;
 static int rtc01_get_time(struct device *dev, struct rtc_time *t)
 {
     printk(KERN_INFO "rtc01_get_time()\n");
+
+    t->tm_sec = 7;
+    t->tm_min = 3;
+    t->tm_hour = 3;
+    t->tm_mday = 1;
+    t->tm_mon = 6;
+    t->tm_year = 113;
+    t->tm_wday = 0;
+    t->tm_yday = 0;
+    t->tm_isdst = 0;
+
+    if (rtc_valid_tm(t) < 0)
+        dev_warn(dev, "Read invalid date/time from RTC\n");
+
     return 0;
 }
 
