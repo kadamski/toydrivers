@@ -8,26 +8,31 @@ static struct platform_device *rtc01_platform_device;
 
 static int rtc01_get_time(struct device *dev, struct rtc_time *t)
 {
+    printk(KERN_INFO "rtc01_get_time()\n");
     return 0;
 }
 
 static int rtc01_set_time(struct device *dev, struct rtc_time *t)
 {
+    printk(KERN_INFO "rtc01_set_time()\n");
     return 0;
 }
 
 static int rtc01_read_alarm(struct device *dev, struct rtc_wkalrm *t)
 {
+    printk(KERN_INFO "rtc01_read_alarm()\n");
     return 0;
 }
 
 static int rtc01_set_alarm(struct device *dev, struct rtc_wkalrm *t)
 {
+    printk(KERN_INFO "rtc01_set_alarm()\n");
     return 0;
 }
 
 static int rtc01_alarm_irq_enable(struct device *dev, unsigned int enabled)
 {
+    printk(KERN_INFO "rtc01_irq_enable()\n");
     return 0;
 }
 
