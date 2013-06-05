@@ -104,6 +104,7 @@ exit_driver_unregister:
 static void __exit rtc01_exit(void)
 {
     printk(KERN_INFO "Exit\n");
+    platform_device_unregister(rtc01_platform_device);
     platform_driver_unregister(&rtc01_platform_driver);
 }
 
