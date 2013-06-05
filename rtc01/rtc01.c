@@ -8,8 +8,6 @@ static struct platform_device *rtc01_platform_device;
 
 static int rtc01_get_time(struct device *dev, struct rtc_time *t)
 {
-    printk(KERN_INFO "rtc01_get_time()\n");
-
     t->tm_sec = 7;
     t->tm_min = 3;
     t->tm_hour = 3;
@@ -98,7 +96,6 @@ static struct platform_driver rtc01_platform_driver = {
 static int __init rtc01_init(void)
 {
     int err;
-    printk(KERN_INFO "Init\n");
     
     err = platform_driver_register(&rtc01_platform_driver);
     if (err)
@@ -127,7 +124,6 @@ exit_driver_unregister:
 
 static void __exit rtc01_exit(void)
 {
-    printk(KERN_INFO "Exit\n");
     platform_device_unregister(rtc01_platform_device);
     platform_driver_unregister(&rtc01_platform_driver);
 }
