@@ -29,6 +29,16 @@ static int rtc01_get_time(struct device *dev, struct rtc_time *t)
 static int rtc01_set_time(struct device *dev, struct rtc_time *t)
 {
     printk(KERN_INFO "rtc01_set_time()\n");
+
+    if (rtc_valid_tm(t) < 0) {
+        dev_warn(dev, "Invalid date/time from RTC\n");
+        return -EINVAL;
+    }
+
+    printk(KERN_INFO " - %d/%d/%d %d:%d:%d\n", t->tm_year+1900, t->tm_mon,
+                                               t->tm_mday, t->tm_hour, t->tm_min, 
+                                               t->tm_sec);
+    
     return 0;
 }
 
